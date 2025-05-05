@@ -124,7 +124,7 @@ def ql_8x8():
 
 def main():
     ql_4x4()
-    ql_8x8()
+    #ql_8x8()
     
 
 if __name__ == "__main__":
