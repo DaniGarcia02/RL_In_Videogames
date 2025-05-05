@@ -54,7 +54,38 @@ This is the policy obtained in 8x8:
 
 ![image](monte_carlo/mc_8x8_policy.png)
 
-Here the algorithm doesn't reach the optimal policy either it gets around 90% after 2.000.000 episodes though there is some variance usually around 5%, with less episodes it can also reach policies of around 90% accuracy however there will more variance, I've gotten policies of 90% with half this many episodes but I also got policies of around 75% sometimes, so this many episodes make the learning process more consistent. If more episodes where added maybe it could reach a higher accuracy however at this point we are reaching deminishing returns where the training time is so high I don't thinks is worth it to get a little bit more accuracy. With 2 million episodes it takes 1157s to train.
+Here the algorithm doesn't reach the optimal policy either it gets around 90% after 2.000.000 episodes though there is some variance usually around 5%, with less episodes it can also reach policies of around 90% accuracy however there will more variance, I've gotten policies of 90% with half this many episodes but I also got policies of around 75% sometimes, so this many episodes make the learning process more consistent. If more episodes where added maybe it could reach a higher accuracy however at this point we are reaching deminishing returns where the training time is so high I don't thinks is worth it to get a little bit more accuracy. With 2 million episodes it takes around 1150s to train though it can be around a minute longer or shorter due to randomness in training.
 
 ## TD Learning
 
+This method also learns form trial-and-error like Monte Carlo methods did, the main difference is the update formula and the time updates are made to the state values. It updates after each step and instead of using the cumulative rewards of the episode it uses this formula: 
+
+V(s) ← V(s) + α[r + γV(s′) − V(s)].
+**Where:**
+- `V(s)`: current state value
+- `α`: learning rate (How fast the algorithm learns)
+- `r`: reward received after taking an action
+- `γ`: discount factor (The value of future rewards)
+- `V(s')`: value of the next state
+
+I have implemented the Q-learning method where the table is being updated after each step and at the end the state value pair with the highest value is the optimal action in that state.
+
+### Results in 4x4
+
+This is the policy obtained in 4x4:
+
+![image](q_learning/ql_4x4_policy.png)
+
+It reaches the optimal policy in 10.000, has 85% accuracy testing it in 1000 episodes and it takes 2s to train.
+
+### Results in 8x8
+
+This is the policy obtained in 8x8:
+
+![image](q_learning/ql_8x8_policy.png)
+
+It doesn't reach the optimal policy in the 8x8 map, it gets around 90% accuracy training for 200.000 episodes, though there is some varience, around 2%. It gets similar results as Monte Carlo in accuracy, however it is much faster taking around 110s to train.
+
+## Conclusions
+
+Value Iteration is by far the best method in this specific environment, Q-Learning would be second and Monte Carlo last. Even though Value iteration is very good here it is unusable on environments where the rewards o probability transitions are unknown. In other environments with more frequent rewards than Frozen-Lake, where the only reward is obtained by reaching the goal, I would expect the results to be a bit closer between the algorithms since Monte Carlo and Q-learning can take a while to reach the first reward.
