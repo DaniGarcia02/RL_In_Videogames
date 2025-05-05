@@ -3,6 +3,7 @@ import numpy as np
 
 import sys
 import os
+import time
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
@@ -87,10 +88,12 @@ def extract_policy(env, value_function):
 def vi_4x4():
     env = gym.make("FrozenLake-v1", map_name="4x4", is_slippery=True)
 
+    st = time.time()
     value_function = value_iteration(env.unwrapped)
     policy = extract_policy(env.unwrapped, value_function)
+    et = time.time()
 
-    print(test_policy(env.unwrapped, policy))
+    print(test_policy(env.unwrapped, policy), "| Time:", et - st)
 
     arrow_policy = convert_to_arrows(policy)
     save_table(arrow_policy, "value_iteration/vi_4x4_policy.png", 4)
@@ -99,10 +102,12 @@ def vi_4x4():
 def vi_8x8():
     env = gym.make("FrozenLake-v1", map_name="8x8", is_slippery=True)
 
+    st = time.time()
     value_function = value_iteration(env.unwrapped)
     policy = extract_policy(env.unwrapped, value_function)
+    et = time.time()
 
-    print(test_policy(env.unwrapped, policy))
+    print(test_policy(env.unwrapped, policy), "| Time:", et - st)
 
     arrow_policy = convert_to_arrows(policy)
     save_table(arrow_policy, "value_iteration/vi_8x8_policy.png", 8)
