@@ -36,7 +36,7 @@ This is the optimal policy in this map, it is possible to reach the goal with 10
 
 Unlike Dynamic Programmic these methods don't require complete knowledge of the environment since it learns by interacting with the environment itself. 
 
-I have implemented a Monte Carlo control method, it starts with a policy where everything is 0, it simulates episodes and updates the policy after an episode is finished with the cumulative reward of the path followed during the episode. I am using First-Visit to update the policy, which means that only the first time an episode is visited starting from the end counts towards the cumulative reward and the values of said state are only updated the first time. This is done because the first time it appears is the time that the action taken lead to reaching the goal or falling into a hole.
+The method I have implemented starts with a policy where everything is 0, it simulates episodes and updates the policy after an episode is finished with the cumulative reward of the path followed during the episode. I am using First-Visit to update the policy, which means that only the first time a state is visited starting from the end counts towards the cumulative reward and the values of said state are only updated the first time. This is done because the first time it appears is the time that the action taken leads to ending the episode (reaching the goal or falling into a hole).
 
 ### Results in 4x4
 
