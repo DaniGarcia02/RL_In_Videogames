@@ -11,6 +11,14 @@ sys.path.append(parent_dir)
 from policy_testing_functions import convert_to_arrows, save_table, test_policy
 
 
+def is_action_fully_terminal(env, state, action):
+    transitions = env.P[state][action]
+    for prob, next_state, reward, terminated in transitions:
+        if not terminated:
+            return False
+    return True
+
+
 def value_iteration(env):
     theta = 1e-10
     gamma = 1
@@ -52,6 +60,9 @@ def extract_policy(env, value_function):
         Q_values = {}
 
         for a in range(env.action_space.n):
+            if is_action_fully_terminal(env, s, a):
+                continue
+
             q = 0
             for prob, new_state, reward, _ in env.P[s][a]:
                 q += prob * (reward + gamma * new_value_function[new_state])
