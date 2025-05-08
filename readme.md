@@ -60,13 +60,14 @@ Here the algorithm doesn't reach the optimal policy either it gets around 90% af
 
 This method also learns form trial-and-error like Monte Carlo methods did, the main difference is the update formula and the time updates are made to the state values. It updates after each step and instead of using the cumulative rewards of the episode it uses this formula: 
 
-V(s) ← V(s) + α[r + γV(s′) − V(s)].
+Q(s, a) ← Q(s, a) + α [r + γ * max_a'(Q(s', a')) − Q(s, a)]
 **Where:**
-- `V(s)`: current state value
-- `α`: learning rate (How fast the algorithm learns)
-- `r`: reward received after taking an action
-- `γ`: discount factor (The value of future rewards)
-- `V(s')`: value of the next state
+    Q(s,a) = current estimate of the action-value
+    α = learning rate
+    r = reward
+    γ = discount factor
+    s′ = next state
+    a′ = possible actions in the next state
 
 I have implemented the Q-learning method where the table is being updated after each step and at the end the state value pair with the highest value is the optimal action in that state.
 
