@@ -6,7 +6,7 @@ This is my end-of-degree project about Reinforcement Learning in videogames, the
 
 # Tabular Methods
 
-These methods consist on filling a table with values for each state-action pair, later this table will be used to obtain the optimal policy which indicates the behaviour the agent has to follow in order to have the best chance to reach the goal. 
+These methods consist on filling a table with values for each state-action pair, later this table will be used to obtain the optimal policy which indicates the behavior the agent has to follow in order to have the best chance to reach the goal. 
 
 These methods will be tested in the Frozen-Lake environment, in which a character has to reach the goal without falling into a hole, the catch is that there is that the agent doesn't always move where it wants to. For example if the agent wants to move down there is a 33% chance of going left or a 33% chance of going right instead. I will test the algorithms in two different frozen lake maps, a 4x4 and an 8x8.
 
