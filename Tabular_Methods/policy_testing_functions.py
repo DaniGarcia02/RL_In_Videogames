@@ -3,7 +3,7 @@ import random
 
 
 def test_policy(env, policy, episodes=1000):
-
+    
     rewards = 0
 
     for episode in range(episodes):
@@ -49,7 +49,6 @@ def convert_to_arrows(table):
 
 
 def save_table(data, filename, size):
-    
     fig, ax = plt.subplots(figsize=(size, size))
     ax.axis('tight')
     ax.axis('off')
